@@ -3,7 +3,7 @@
 import 'dart:io';
 
 void main() async{
-  String feedbackMessage = '\nVersāo atualizada com sucesso!';
+  String feedbackMessage = 'Versāo atualizada com sucesso!';
 
   String tagName = writeOut(
     message: 'Digite a tag de versāo: '
