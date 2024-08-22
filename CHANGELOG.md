@@ -1,3 +1,7 @@
+## 0.0.5
+
+* TODO: Ajuste de bugs.
+
 ## 0.0.4
 
 * TODO: Nova versāo de loadings.
