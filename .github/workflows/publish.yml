@@ -12,9 +12,9 @@ jobs:
     environment: 'pub.dev'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@v3
         with:
           flutter-version: '3.24.0' 
           channel: 'stable'
@@ -32,7 +32,7 @@ jobs:
         env:
           PUB_DEV_TOKEN: ${{ secrets.PUB_DEV_TOKEN }}
         run: |
-          echo $PUB_DEV_TOKEN > /Users/senai/Library/Application Support/dart/pub-credentials.json
+          echo $PUB_DEV_TOKEN > ~/Users/senai/Library/Application Support/dart/pub-credentials.json
           dart pub publish -f
 
         
