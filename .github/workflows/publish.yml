@@ -26,10 +26,10 @@ jobs:
         run: flutter pub get
 
       - name: Build package
-        run: flutter pub publish --dry-run
+        run: dart pub publish --dry-run
 
       - name: Publish to GitHub Packages
-        run: flutter pub publish
+        run: dart pub publish
 
       - name: Publish to pub.dev
-        run: flutter pub publish --server https://pub.dev
+        run: dart pub publish --server https://pub.dev
