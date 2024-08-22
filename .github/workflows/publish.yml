@@ -11,8 +11,6 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     environment: 'pub.dev'
-    permissions:
-      id-token: write
 
     steps:
       - name: Checkout code
