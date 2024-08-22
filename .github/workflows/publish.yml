@@ -30,6 +30,3 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: dart pub publish
-
-      - name: Accept package
-        run: "y"

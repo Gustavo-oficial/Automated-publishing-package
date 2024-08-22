@@ -6,6 +6,7 @@ class IstButton extends StatelessWidget {
   final ButtonType buttonType;
   final String? title;
   final Widget? customTitle;
+  final bool isLoading;
   final VoidCallback? action;
 
   const IstButton({
@@ -13,6 +14,7 @@ class IstButton extends StatelessWidget {
     this.buttonType = ButtonType.primary,
     this.title,
     this.customTitle,
+    this.isLoading = false,
     this.action,
   });
 
