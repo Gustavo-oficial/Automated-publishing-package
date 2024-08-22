@@ -8,15 +8,16 @@ Componentes de UI Reutilizáveis: Widgets como botões, campos de entrada, cards
 Temas Globais: Aplique um tema unificado em toda a sua aplicação.
 Fácil Integração: Projetado para ser incorporado rapidamente em novos ou existentes projetos Flutter.
 
-Introdução
+**Introdução**
 Pré-requisitos
 Para começar a usar o My Design System, você precisará ter o Flutter instalado em sua máquina. Certifique-se de que está utilizando a versão mais recente do Flutter.
 flutter doctor
 
-Instalação
+**Instalação**
 Adicione o pacote ao seu arquivo pubspec.yaml:
+```dart
 - dependencies:
-    my_design_system: ^1.0.0
+    my_design_system: ^1.0.0```
 
 Então, execute o comando:
 - flutter pub get
