@@ -32,5 +32,5 @@ jobs:
         env:
           CREDENTIAL_JSON: ${{ secrets.CREDENTIAL_JSON }}
         run: |
-          echo $CREDENTIAL_JSON > ~/Library/Application Support/dart/pub-credentials.json
+          echo $CREDENTIAL_JSON > ~/.pub-cache/credentials.json
           flutter pub publish --force
