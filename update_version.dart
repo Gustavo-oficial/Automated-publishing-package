@@ -14,13 +14,13 @@ void main() async{
 
   ProcessResult createTag = runCommand(
     command: 'git tag $tagName -m "$tagMessage"',
-    feedbackMessage: 'Carregando...\n'
+    feedbackMessage: '\nCarregando...\n'
   );
 
   if (createTag.exitCode == 0) {
     ProcessResult saveChanges = runCommand(
       command: 'git add .',
-      feedbackMessage: 'Carregando...\n'
+      feedbackMessage: ''
     );
 
     if(saveChanges.exitCode == 0){
@@ -30,7 +30,7 @@ void main() async{
 
       ProcessResult commitChanges = runCommand(
         command: 'git commit -m "$tagMessage"',
-        feedbackMessage: 'Carregando...\n'
+        feedbackMessage: '\nCarregando...\n'
       );
 
       if(commitChanges.exitCode == 0){
