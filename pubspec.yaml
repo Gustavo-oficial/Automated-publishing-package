@@ -1,6 +1,6 @@
 name: istic_ui_mobile
 description: 'Este pacote foi depreciado e não será mais mantido. Use [mobick_ui] em vez disso.'
-version: 0.0.5
+version: 0.0.2
 homepage: https://github.com/Gustavo-oficial/Automated-publishing-package
 
 environment:
