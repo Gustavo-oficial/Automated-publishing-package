@@ -22,7 +22,6 @@ void main() async{
       command: 'git add .',
       feedbackMessage: 'Carregando...\n'
     );
-    print(32);
 
     if(saveChanges.exitCode == 0){
       String tagMessage = writeOut(
@@ -37,7 +36,7 @@ void main() async{
       if(commitChanges.exitCode == 0){
         ProcessResult updateVersion = runCommand(
           command: 'git push origin main $tagName',
-          feedbackMessage: 'Carregando...\n'
+          feedbackMessage: ''
         );
 
         if(updateVersion.exitCode != 0){
