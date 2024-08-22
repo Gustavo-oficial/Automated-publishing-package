@@ -10,8 +10,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    with:
-      environment: 'pub.dev'
+    environment: 'pub.dev'
 
     steps:
       - name: Checkout code
