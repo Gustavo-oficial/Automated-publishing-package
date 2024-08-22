@@ -36,11 +36,20 @@ void main() async{
 
       if(commitChanges.exitCode == 0){
         ProcessResult updateVersion = runCommand(
-          command: 'git push origin $tagName',
-          feedbackMessage: 'Tag sendo criada...\n'
+          command: 'git push origin main',
+          feedbackMessage: 'Carregando...\n'
         );
 
         if(updateVersion.exitCode != 0){
+          ProcessResult updateVersionTag = runCommand(
+            command: 'git push origin $tagName',
+            feedbackMessage: 'Carregando...\n'
+          );
+
+          if(updateVersionTag.exitCode != 0){
+            feedbackMessage = 'Erro ao atualizar a versāo de tag';
+          }
+        }else{
           feedbackMessage = 'Erro ao atualizar a versāo';
         }
       }else{
