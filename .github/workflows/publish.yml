@@ -6,31 +6,33 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+*'
     branches:
       - main
-
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
-    environment: 'pub.dev'
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Flutter
+      - uses: actions/checkout@v2
+      - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0' 
-          channel: 'stable'
-
+          flutter-version: '3.3.3'
       - name: Install dependencies
         run: flutter pub get
-
-      - name: Build package
-        run: dart pub publish --dry-run
-
-      - name: Publish to Pub.dev
-        env:
-          PUB_DEV_TOKEN: ${{ secrets.PUB_DEV_TOKEN }}
+      - name: Analyze
+        run: flutter analyze
+      - name: Setup credentials
         run: |
-          echo "token":$PUB_DEV_TOKEN > ~/.pub-cache/credentials.json
-          flutter pub publish --force
+          mkdir -p ~/.pub-cache 
+          cat <<EOF > ~/.pub-cache/credentials.json
+          {
+            "accessToken":"${{ secrets.PUB_DEV_PUBLISH_ACCESS_TOKEN }}",
+            "refreshToken":"${{ secrets.PUB_DEV_PUBLISH_REFRESH_TOKEN }}",
+            "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
+            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+            "expiration": ${{ secrets.PUB_DEV_PUBLISH_EXPIRATION }}
+          }
+          EOF
+      - name: Check Publish Warnings
+        run: dart pub publish --dry-run
+      - name: Publish Package
+        run: dart pub publish -f
