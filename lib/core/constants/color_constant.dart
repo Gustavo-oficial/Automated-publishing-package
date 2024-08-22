@@ -1,3 +1,3 @@
-import '../theme/custom_colors.dart';
+import '../../config/theme/custom_colors.dart';
 
 CustomColors get appColors => const CustomColors();

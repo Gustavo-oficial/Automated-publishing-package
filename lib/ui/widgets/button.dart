@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:istic_ui_mobile/enums/button_type.dart';
-import 'package:istic_ui_mobile/extensions/context_extension.dart';
+import 'package:istic_ui_mobile/core/enums/button_type.dart';
+import 'package:istic_ui_mobile/core/extensions/context_extension.dart';
 
 class IstButton extends StatelessWidget {
   final ButtonType buttonType;
