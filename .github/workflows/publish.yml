@@ -18,23 +18,21 @@ jobs:
         with:
           flutter-version: '3.24.0' 
           channel: 'stable'
+
       - name: Install dependencies
         run: flutter pub get
+
       - name: Analyze
         run: flutter analyze
-      - name: Setup credentials
-        run: |
-          mkdir -p ~/.pub-cache 
-          cat <<EOF > ~/.pub-cache/credentials.json
-          {
-            "accessToken":"${{ secrets.PUB_DEV_PUBLISH_ACCESS_TOKEN }}",
-            "refreshToken":"${{ secrets.PUB_DEV_PUBLISH_REFRESH_TOKEN }}",
-            "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
-            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
-            "expiration": ${{ secrets.PUB_DEV_PUBLISH_EXPIRATION }}
-          }
-          EOF
+
       - name: Check Publish Warnings
         run: dart pub publish --dry-run
+
       - name: Publish Package
-        run: dart pub publish -f
+        env:
+          PUB_DEV_TOKEN: ${{ secrets.PUB_DEV_TOKEN }}
+        run: |
+          echo $PUB_DEV_TOKEN > /Users/senai/Library/Application Support/dart/pub-credentials.json
+          dart pub publish -f
+
+        
