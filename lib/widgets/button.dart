@@ -25,7 +25,6 @@ class IstButton extends StatelessWidget {
     return GestureDetector(
       onTap: action,
       child: Container(
-        width: 200,
         height: 50,
         color: buttonType.color,
         child: customTitle ?? Text(
