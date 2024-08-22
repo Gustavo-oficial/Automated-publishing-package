@@ -33,6 +33,3 @@ jobs:
 
       - name: Accept package
         run: "y"
-
-      - name: Publish to pub.dev
-        run: dart pub publish --server https://pub.dev
