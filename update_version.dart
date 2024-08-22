@@ -5,35 +5,35 @@ import 'dart:io';
 void main() async{
   String feedbackMessage = 'Versāo atualizada com sucesso!';
 
-  String tagName = writeOut(
-    message: 'Digite a tag de versāo: '
-  );
-  String tagMessage = writeOut(
-    message: 'Digite a mensagem da versāo: '
+  String commitMessage = writeOut(
+    message: 'Digite a mensagem de commit: '
   );
 
-  ProcessResult createTag = runCommand(
-    command: 'git tag $tagName -m "$tagMessage"',
-    feedbackMessage: '\nCarregando...\n'
+  ProcessResult saveChanges = runCommand(
+    command: 'git add .',
+    feedbackMessage: ''
   );
 
-  if (createTag.exitCode == 0) {
-    ProcessResult saveChanges = runCommand(
-      command: 'git add .',
-      feedbackMessage: ''
+  if (saveChanges.exitCode == 0) {
+    ProcessResult commitChanges = runCommand(
+      command: 'git commit -m "$commitMessage"',
+      feedbackMessage: '\nCarregando...\n'
     );
 
-    if(saveChanges.exitCode == 0){
-      String commitMessage = writeOut(
-        message: 'Digite a mensagem de commit: '
+    if(commitChanges.exitCode == 0){
+      String tagName = writeOut(
+        message: 'Digite a tag de versāo: '
+      );
+      String tagMessage = writeOut(
+        message: 'Digite a mensagem da versāo: '
       );
 
-      ProcessResult commitChanges = runCommand(
-        command: 'git commit -m "$commitMessage"',
+      ProcessResult createTag = runCommand(
+        command: 'git tag $tagName -m "$tagMessage"',
         feedbackMessage: '\nCarregando...\n'
       );
 
-      if(commitChanges.exitCode == 0){
+      if(createTag.exitCode == 0){
         ProcessResult updateVersion = runCommand(
           command: 'git push origin main $tagName',
           feedbackMessage: ''
