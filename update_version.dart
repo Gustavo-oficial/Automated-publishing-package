@@ -24,12 +24,12 @@ void main() async{
     );
 
     if(saveChanges.exitCode == 0){
-      String tagMessage = writeOut(
+      String commitMessage = writeOut(
         message: 'Digite a mensagem de commit: '
       );
 
       ProcessResult commitChanges = runCommand(
-        command: 'git commit -m "$tagMessage"',
+        command: 'git commit -m "$commitMessage"',
         feedbackMessage: '\nCarregando...\n'
       );
 
