@@ -28,5 +28,9 @@ jobs:
       - name: Build package
         run: dart pub publish --dry-run
 
-      - name: Publish to GitHub Packages
-        run: dart pub publish --force
+      - name: Publish to Pub.dev
+        env:
+          CREDENTIAL_JSON: ${{ secrets.CREDENTIAL_JSON }}
+        run: |
+          echo $CREDENTIAL_JSON > ~/Library/Application Support/dart/pub-credentials.json
+          flutter pub publish --force
